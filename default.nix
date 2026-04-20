@@ -1,5 +1,5 @@
 with import <nixpkgs> {};
-with pkgs.python311Packages;
+with pkgs.python314Packages;
 
 let project_root = builtins.getEnv "PWD"; in
 buildPythonPackage rec {
@@ -31,7 +31,7 @@ buildPythonPackage rec {
     # HACK: replace duplicated src files with a symbolic link to the original
     # src files, in order to not transform python into a compiled language.
     postInstall = ''
-        rm -rf $out/lib/python3.11/site-packages/kalamine
-        ln -s ${project_root}/kalamine $out/lib/python3.11/site-packages/kalamine
+        rm -rf $out/lib/python3.14/site-packages/kalamine
+        ln -s ${project_root}/kalamine $out/lib/python3.14/site-packages/kalamine
     '';
 }
